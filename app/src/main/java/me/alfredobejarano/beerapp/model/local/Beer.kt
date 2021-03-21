@@ -13,7 +13,7 @@ data class Beer(
     val tagLine: String = "",
     val imageUrl: String = "",
     val description: String = "",
-    var liked: Boolean = false,
-    var rejected: Boolean = false,
+    val liked: Boolean = false,
+    val rejected: Boolean = false,
     val foodPairings: List<String> = emptyList()
 )

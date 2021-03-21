@@ -1,5 +1,7 @@
 package me.alfredobejarano.beerapp.repository
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.alfredobejarano.beerapp.AppState
 import me.alfredobejarano.beerapp.datasource.local.BeerDao
 import me.alfredobejarano.beerapp.datasource.local.PaginationDataSource
@@ -28,14 +30,24 @@ class BeerRepository constructor(
         val likedBeers = getLikedBeers()
         val rejectedBeers = beerDao.getRejectedBeers()
 
-        val filteredBeers: HashMap<Int, Beer> =
-            beers.associateBy({ it.id }, { it }) as HashMap<Int, Beer>
+        return withContext(Dispatchers.Default) {
+            val filteredBeers: HashMap<Int, Beer> =
+                beers.associateBy({ it.id }, { it }) as HashMap<Int, Beer>
 
-        likedBeers?.forEach { filteredBeers.remove(it.id) }
-        rejectedBeers?.forEach { filteredBeers.remove(it.id) }
+            likedBeers?.forEach { filteredBeers.remove(it.id) }
+            rejectedBeers?.forEach { filteredBeers.remove(it.id) }
 
-        return filteredBeers.values.toList()
+            filteredBeers.values.toList()
+        }
     }
 
     suspend fun getLikedBeers() = beerDao.getLikedBeers()
+
+    suspend fun insertBeer(beer: Beer) = beerDao.createOrUpdate(beer)
+
+    suspend fun likeBeer(beer: Beer) =
+        beerDao.createOrUpdate(beer.copy(liked = true, rejected = false))
+
+    suspend fun rejectBeer(beer: Beer) =
+        beerDao.createOrUpdate(beer.copy(rejected = true, liked = false))
 }
