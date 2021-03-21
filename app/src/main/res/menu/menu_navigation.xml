@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_beers"
+        android:id="@+id/beers_screen"
         android:icon="@drawable/ic_baseline_beer"
         android:title="@string/app_name" />
 
     <item
-        android:id="@+id/item_favorites"
+        android:id="@+id/favorites_screen"
         android:icon="@drawable/ic_baseline_favorite"
         android:title="@string/app_name" />
 </menu>

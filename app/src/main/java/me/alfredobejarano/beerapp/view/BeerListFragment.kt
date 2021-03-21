@@ -1,6 +1,5 @@
 package me.alfredobejarano.beerapp.view
 
-import android.R.anim.fade_in
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,8 +18,6 @@ class BeerListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.navigationView.startAnimationCompat(context = requireContext(), resId = fade_in)
 
         binding.fabReject.startAnimationCompat(context = requireContext(), resId = pop_up, onEnd = {
             binding.fabUndo.visibility = View.VISIBLE

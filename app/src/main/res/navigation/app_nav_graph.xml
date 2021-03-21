@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/beerListFragment">
+    app:startDestination="@id/beers_screen">
     <fragment
-        android:id="@+id/beerListFragment"
+        android:id="@+id/beers_screen"
         android:name="me.alfredobejarano.beerapp.view.BeerListFragment"
         android:label="BeerListFragment"
         tools:layout="@layout/fragment_beer_list" />
