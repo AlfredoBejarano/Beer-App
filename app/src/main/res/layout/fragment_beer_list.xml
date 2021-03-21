@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:itemIconSize="@dimen/navigation_icon_size"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_navigation" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:backgroundTint="?android:attr/colorBackground"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fab_undo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97"
+        app:srcCompat="@drawable/ic_baseline_reject"
+        app:tint="@color/red_500" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_undo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:visibility="invisible"
+        app:backgroundTint="?android:attr/colorBackground"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@id/fab_reject"
+        app:layout_constraintEnd_toStartOf="@id/fab_like"
+        app:layout_constraintStart_toEndOf="@id/fab_reject"
+        app:layout_constraintTop_toTopOf="@id/fab_reject"
+        app:srcCompat="@drawable/ic_baseline_undo"
+        app:tint="@color/amber_500"
+        tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:visibility="invisible"
+        app:backgroundTint="?android:attr/colorBackground"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@id/fab_reject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fab_undo"
+        app:layout_constraintTop_toTopOf="@id/fab_reject"
+        app:srcCompat="@drawable/ic_baseline_like"
+        app:tint="@color/cyan_500"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
