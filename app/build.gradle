@@ -15,7 +15,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "BASE_URL", "https://api.punkapi.com/v2/beers/"
+        buildConfigField 'int', 'PAGE_SIZE', '20'
+        buildConfigField 'int', 'DATABASE_VERSION', '1'
+        buildConfigField "String", "BASE_URL", '"https://api.punkapi.com/v2/beers/"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,6 +56,8 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.2.6'
 
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-android:3.8.0'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
