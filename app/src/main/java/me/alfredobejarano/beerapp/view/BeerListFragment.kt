@@ -55,10 +55,13 @@ class BeerListFragment : Fragment() {
         getBeers()
     }
 
-    private fun getBeers() =
+    private fun getBeers() {
+        binding.progress.visibility = View.VISIBLE
         viewModel.getBeerList(AppState.currentPage).observe(viewLifecycleOwner, { beers ->
             beers?.run(binding.beersList::setBeers)
+            binding.progress.visibility = View.GONE
         })
+    }
 
     private fun showActionPopUp(@DrawableRes icon: Int) = binding.imageViewAction.run {
         setImageResource(icon)

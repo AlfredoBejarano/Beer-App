@@ -31,7 +31,9 @@ class BeerRepository @Inject constructor(
 
     suspend fun getBeers(currentPage: Int = 0): List<Beer> {
         val beers = if (appState.isConnected) {
-            (getBeersFromApi(currentPage) + (beerDao.getBeers() ?: emptyList())).sortedBy { it.id }
+            val remoteBeers = getBeersFromApi(currentPage)
+            val localBeers = beerDao.getBeers() ?: emptyList()
+            (remoteBeers + localBeers).sortedBy { it.id }
         } else {
             beerDao.getBeers() ?: emptyList()
         }
