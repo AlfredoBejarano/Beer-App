@@ -43,6 +43,7 @@ class BeerCard @JvmOverloads constructor(
         val beerLayout =
             ItemBeerBinding.inflate(LayoutInflater.from(context)).also { it.beer = beer }
 
+        beerLayout.beerPicture.setImageURI(beer.imageUrl)
         configureSwipe()
 
         addView(beerLayout.root)

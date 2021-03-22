@@ -18,15 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView_beer"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/beer_item_details_photo_height"
-                android:background="@color/amber_500"
                 android:contentDescription="@string/app_name"
+                app:actualImageScaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderImage="@drawable/ic_baseline_beer" />
 
             <TextView
                 android:id="@+id/beer_name"

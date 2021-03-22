@@ -28,6 +28,7 @@ class BeerDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.beer = args.beer
+        binding.imageViewBeer.setImageURI(args.beer.imageUrl)
         binding.executePendingBindings()
 
         binding.recyclerViewFood.layoutManager = LinearLayoutManager(context)

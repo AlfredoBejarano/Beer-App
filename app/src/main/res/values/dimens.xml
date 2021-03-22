@@ -2,7 +2,7 @@
 <resources>
     <dimen name="navigation_icon_size">36dp</dimen>
     <dimen name="app_corner_radius">8dp</dimen>
-    <dimen name="beer_item_height_grid">300dp</dimen>
+    <dimen name="beer_item_height_grid">150dp</dimen>
     <dimen name="beer_item_details_photo_height">400dp</dimen>
     <dimen name="beer_grid_item_margin">8dp</dimen>
     <dimen name="margin_text_field">16dp</dimen>

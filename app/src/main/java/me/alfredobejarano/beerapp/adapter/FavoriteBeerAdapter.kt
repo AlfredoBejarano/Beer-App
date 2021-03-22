@@ -27,6 +27,7 @@ class FavoriteBeerAdapter(
 
         fun bind(beer: Beer) {
             binding.beer = beer
+            binding.beerPicture.setImageURI(beer.imageUrl)
             binding.executePendingBindings()
             binding.root.setOnClickListener { beer.onBeerClicked() }
         }
