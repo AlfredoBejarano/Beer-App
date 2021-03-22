@@ -34,7 +34,7 @@ class BeerCard @JvmOverloads constructor(
         }.widthPixels
 
         radius = 16f
-        cardElevation = 2f
+        cardElevation = 0f
     }
 
     fun bind(beer: Beer) {

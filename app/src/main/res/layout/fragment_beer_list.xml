@@ -9,6 +9,7 @@
         android:id="@+id/beersList"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:elevation="@dimen/cardview_default_elevation"
         android:padding="@dimen/padding_beers_list"
         app:layout_constraintBottom_toTopOf="@id/fab_reject"
         app:layout_constraintEnd_toEndOf="parent"
