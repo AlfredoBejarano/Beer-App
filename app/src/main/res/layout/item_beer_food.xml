@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/food_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/item_beer_food_spacing"
+    android:layout_marginBottom="@dimen/item_beer_food_spacing"
+    android:drawablePadding="@dimen/margin_text_field"
+    android:gravity="start|center_vertical"
+    android:paddingStart="@dimen/app_corner_radius"
+    android:paddingEnd="@dimen/app_corner_radius"
+    android:textColor="?android:attr/textColorPrimary"
+    app:drawableStartCompat="@drawable/ic_baseline_food"
+    tools:text="Lasagna">
+
+</TextView>

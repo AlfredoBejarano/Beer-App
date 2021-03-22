@@ -16,7 +16,11 @@ class BeerCard @JvmOverloads constructor(
     defaultStyleResource: Int = 0
 ) : CardView(context, attributeSet, defaultStyleResource) {
     private var dX = 0f
+    private var dY = 0f
+
     private var originX = 0f
+    private var originY = 0f
+
     private var displayWidth = 0
 
     private lateinit var beer: Beer
@@ -49,18 +53,28 @@ class BeerCard @JvmOverloads constructor(
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     originX = x
+                    originY = y
+
                     dX = x - event.rawX
+                    dY = y - event.rawY
                 }
                 MotionEvent.ACTION_MOVE -> animate()
                     .x(event.rawX + dX)
+                    .y(event.rawY + dY)
                     .setDuration(0)
                     .start()
                 MotionEvent.ACTION_UP -> {
-                    performClick()
                     when {
                         x >= (width / 2) -> beer.onSwipeRight()
                         x <= (-(width / 2)) -> beer.onSwipeLeft()
-                        else -> animate().x(originX).setDuration(0).start()
+                        else -> {
+                            performClick()
+                            animate()
+                                .x(originX)
+                                .y(originY)
+                                .setDuration(0)
+                                .start()
+                        }
                     }
                 }
             }

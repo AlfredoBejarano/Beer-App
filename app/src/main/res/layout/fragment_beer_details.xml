@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="beer"
+            type="me.alfredobejarano.beerapp.model.local.Beer" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView_beer"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/beer_item_details_photo_height"
+                android:background="@color/amber_500"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/beer_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_text_field"
+                android:layout_marginTop="@dimen/margin_text_field"
+                android:layout_marginEnd="@dimen/margin_text_field"
+                android:text="@{beer.name}"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/title_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView_beer"
+                tools:text="Beer" />
+
+            <TextView
+                android:id="@+id/beer_tagline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_text_field"
+                android:layout_marginTop="@dimen/app_corner_radius"
+                android:layout_marginEnd="@dimen/margin_text_field"
+                android:text="@{beer.tagLine}"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/beer_name"
+                tools:text="A nice drink" />
+
+            <TextView
+                android:id="@+id/beer_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_text_field"
+                android:layout_marginTop="@dimen/margin_text_field"
+                android:layout_marginEnd="@dimen/margin_text_field"
+                android:layout_marginBottom="@dimen/margin_text_field"
+                android:text="@{beer.description}"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="@dimen/title_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/beer_tagline"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+            <TextView
+                android:id="@+id/food_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_text_field"
+                android:layout_marginTop="@dimen/margin_text_field"
+                android:layout_marginEnd="@dimen/margin_text_field"
+                android:text="@string/company_me"
+                android:textColor="?android:attr/textColorTertiary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/beer_description" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_food"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_text_field"
+                android:layout_marginTop="@dimen/app_corner_radius"
+                android:layout_marginEnd="@dimen/margin_text_field"
+                android:layout_marginBottom="@dimen/app_corner_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/food_label"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_beer_food" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

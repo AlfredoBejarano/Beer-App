@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import me.alfredobejarano.beerapp.R
 import me.alfredobejarano.beerapp.R.anim.pop_up
 import me.alfredobejarano.beerapp.databinding.FragmentBeerListBinding
@@ -27,9 +28,22 @@ class BeerListFragment : Fragment() {
             binding.fabLike.startAnimationCompat(requireContext(), resId = pop_up)
         })
 
+        binding.fabLike.setOnClickListener { binding.beersList.likeCurrentCard() }
+        binding.fabReject.setOnClickListener { binding.beersList.rejectCurrentCard() }
+
+        binding.beersList.onCardClicked = {
+            findNavController().navigate(BeerListFragmentDirections.showBeerDetails(this))
+        }
+
         binding.beersList.setBeers(
             List(5) {
-                Beer(id = it, name = "Beer $it", tagLine = "Nice drink")
+                Beer(
+                    id = it,
+                    name = "Beer $it",
+                    tagLine = "Nice drink",
+                    description = "Nice Drink",
+                    foodPairings = listOf("Nice Food", "Nice Food")
+                )
             }
         )
 

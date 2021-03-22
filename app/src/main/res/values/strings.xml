@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BeerApp</string>
+    <string name="company_me">Company me with:</string>
 </resources>

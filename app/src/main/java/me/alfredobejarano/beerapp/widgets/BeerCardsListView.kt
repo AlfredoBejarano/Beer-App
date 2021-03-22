@@ -14,9 +14,12 @@ class BeerCardsListView @JvmOverloads constructor(
 
     private var items: HashMap<Int, Beer> = hashMapOf()
 
-    var onBeerLiked: Beer.() -> Unit = {}
-    var onBeerRejected: Beer.() -> Unit = {}
+    private var currentCard: BeerCard? = null
+
     var onLastBeerSwiped: () -> Unit = {}
+    var onBeerLiked: Beer.() -> Unit = {}
+    var onCardClicked: Beer.() -> Unit = {}
+    var onBeerRejected: Beer.() -> Unit = {}
 
     init {
         if (isInEditMode) {
@@ -29,8 +32,15 @@ class BeerCardsListView @JvmOverloads constructor(
             items[it.id] = it
         }
 
-        addView(buildBeerCard(beers.first()))
+        val card = buildBeerCard(beers.first())
+        addView(card)
+        currentCard = card
+        currentCard?.setOnClickListener { beers.first().onCardClicked() }
     }
+
+    fun likeCurrentCard() = currentCard?.onSwipeRight?.invoke(items.entries.first().value) ?: Unit
+
+    fun rejectCurrentCard() = currentCard?.onSwipeLeft?.invoke(items.entries.first().value) ?: Unit
 
     private fun buildBeerCard(beer: Beer): BeerCard {
         val card = BeerCard(context)
@@ -44,6 +54,7 @@ class BeerCardsListView @JvmOverloads constructor(
         beer.action()
         items.remove(beer.id)
         removeView(card)
+        currentCard = null
         addLowerCard()
         checkLastItem()
     }
@@ -53,6 +64,8 @@ class BeerCardsListView @JvmOverloads constructor(
             items.entries.first().run {
                 val card = buildBeerCard(this.value)
                 addView(card)
+                currentCard = card
+                currentCard?.setOnClickListener { this.value.onCardClicked() }
                 card.startAnimationCompat(context, android.R.anim.fade_in)
             }
         }

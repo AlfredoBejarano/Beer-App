@@ -3,4 +3,10 @@
     <dimen name="navigation_icon_size">36dp</dimen>
     <dimen name="app_corner_radius">8dp</dimen>
     <dimen name="beer_item_height_grid">300dp</dimen>
+    <dimen name="beer_item_details_photo_height">400dp</dimen>
+    <dimen name="beer_grid_item_margin">8dp</dimen>
+    <dimen name="margin_text_field">16dp</dimen>
+    <dimen name="padding_beers_list">32dp</dimen>
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="item_beer_food_spacing">4dp</dimen>
 </resources>
