@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="beer"
+            type="me.alfredobejarano.beerapp.model.local.Beer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/beer_item_height_grid"
+        tools:layout_width="200dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/amber_500"
+            app:layout_constraintBottom_toTopOf="@id/textViewName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{beer.name}"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/textViewTagLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Buzz" />
+
+        <TextView
+            android:id="@+id/textViewTagLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{beer.tagLine}"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="A Real Bitter Experience." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -16,6 +16,7 @@ class BeerCardsListView @JvmOverloads constructor(
 
     var onBeerLiked: Beer.() -> Unit = {}
     var onBeerRejected: Beer.() -> Unit = {}
+    var onLastBeerSwiped: () -> Unit = {}
 
     init {
         if (isInEditMode) {
@@ -34,20 +35,17 @@ class BeerCardsListView @JvmOverloads constructor(
     private fun buildBeerCard(beer: Beer): BeerCard {
         val card = BeerCard(context)
         card.bind(beer)
-        card.onSwipeLeft = {
-            onBeerRejected()
-            items.remove(beer.id)
-            removeView(card)
-            addLowerCard()
-        }
-        card.onSwipeRight = {
-            onBeerLiked()
-            items.remove(beer.id)
-            removeView(card)
-            addLowerCard()
-        }
-
+        card.onSwipeLeft = { onBeerSwipe(beer, card, onBeerRejected) }
+        card.onSwipeRight = { onBeerSwipe(beer, card, onBeerLiked) }
         return card
+    }
+
+    private fun onBeerSwipe(beer: Beer, card: BeerCard, action: Beer.() -> Unit) {
+        beer.action()
+        items.remove(beer.id)
+        removeView(card)
+        addLowerCard()
+        checkLastItem()
     }
 
     private fun addLowerCard() {
@@ -57,6 +55,12 @@ class BeerCardsListView @JvmOverloads constructor(
                 addView(card)
                 card.startAnimationCompat(context, android.R.anim.fade_in)
             }
+        }
+    }
+
+    private fun checkLastItem() {
+        if (items.size == 0) {
+            onLastBeerSwiped()
         }
     }
 }
