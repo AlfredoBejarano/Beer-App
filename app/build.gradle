@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -22,7 +23,7 @@ android {
 
         buildConfigField 'int', 'PAGE_SIZE', '20'
         buildConfigField 'int', 'DATABASE_VERSION', '1'
-        buildConfigField "String", "BASE_URL", '"https://api.punkapi.com/v2/beers/"'
+        buildConfigField "String", "BASE_URL", '"https://api.punkapi.com/"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,6 +63,11 @@ dependencies {
 
     implementation "androidx.navigation:navigation-ui-ktx:2.3.4"
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.4"
+
+    implementation "com.google.dagger:hilt-android:2.31.2-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.31.2-alpha"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
 
     kapt 'androidx.room:room-compiler:2.2.6'
     implementation 'androidx.room:room-ktx:2.2.6'

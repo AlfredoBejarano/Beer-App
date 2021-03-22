@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import me.alfredobejarano.beerapp.adapter.FoodCompanyAdapter
 import me.alfredobejarano.beerapp.databinding.FragmentBeerDetailsBinding
 
+@AndroidEntryPoint
 class BeerDetailsFragment : Fragment() {
     private val args: BeerDetailsFragmentArgs by navArgs()
 

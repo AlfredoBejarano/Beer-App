@@ -2,8 +2,9 @@ package me.alfredobejarano.beerapp.datasource.local
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import javax.inject.Inject
 
-class PaginationDataSource(private val sharedPreferences: SharedPreferences) {
+class PaginationDataSource @Inject constructor(private val sharedPreferences: SharedPreferences) {
     fun getCurrentPage() = sharedPreferences.getInt(PAGE_SHARED_PREFS_KEY, DEFAULT_PAGE)
 
     fun saveCurrentPage(newPage: Int) = sharedPreferences.edit {

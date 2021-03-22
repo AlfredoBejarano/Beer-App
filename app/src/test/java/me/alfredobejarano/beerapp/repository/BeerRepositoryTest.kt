@@ -66,6 +66,7 @@ class BeerRepositoryTest {
     @Test
     fun getBeers_whenConnected() {
         runBlocking {
+            Mockito.`when`(mockBeerDao.createOrUpdate(Beer())).thenReturn(Unit)
             Mockito.`when`(mockAppState.isConnected).thenReturn(true)
             Mockito.`when`(mockPaginationDataSource.getCurrentPage()).thenReturn(1)
             Mockito.`when`(mockBeerApiService.getBeers(1)).thenReturn(mockRemoteBeers)

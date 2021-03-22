@@ -32,10 +32,12 @@ class BeerCardsListView @JvmOverloads constructor(
             items[it.id] = it
         }
 
-        val card = buildBeerCard(beers.first())
-        addView(card)
-        currentCard = card
-        currentCard?.setOnClickListener { beers.first().onCardClicked() }
+        beers.firstOrNull()?.run {
+            val card = buildBeerCard(this)
+            addView(card)
+            currentCard = card
+            currentCard?.setOnClickListener { beers.first().onCardClicked() }
+        }
     }
 
     fun likeCurrentCard() = currentCard?.onSwipeRight?.invoke(items.entries.first().value) ?: Unit

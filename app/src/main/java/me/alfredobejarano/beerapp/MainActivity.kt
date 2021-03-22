@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import me.alfredobejarano.beerapp.R.id.navigation_fragment
 import me.alfredobejarano.beerapp.databinding.ActivityMainBinding
 import me.alfredobejarano.beerapp.utils.startAnimationCompat
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 

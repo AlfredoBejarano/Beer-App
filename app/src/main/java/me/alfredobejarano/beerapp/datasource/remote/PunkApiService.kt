@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PunkApiService {
-    @GET("/")
+    @GET("/v2/beers")
     suspend fun getBeers(
         @Query("page")
         page: Int = 1,
