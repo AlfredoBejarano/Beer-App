@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import me.alfredobejarano.beerapp.R.anim.pop_up
 import me.alfredobejarano.beerapp.databinding.FragmentBeerListBinding
+import me.alfredobejarano.beerapp.model.local.Beer
 import me.alfredobejarano.beerapp.utils.startAnimationCompat
 import me.alfredobejarano.beerapp.utils.viewBinding
 
@@ -20,14 +21,14 @@ class BeerListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fabReject.startAnimationCompat(context = requireContext(), resId = pop_up, onEnd = {
-            binding.fabUndo.visibility = View.VISIBLE
-            binding.fabUndo.startAnimationCompat(
-                context = requireContext(),
-                resId = pop_up,
-                onEnd = {
-                    binding.fabLike.visibility = View.VISIBLE
-                    binding.fabLike.startAnimationCompat(requireContext(), resId = pop_up)
-                })
+            binding.fabLike.visibility = View.VISIBLE
+            binding.fabLike.startAnimationCompat(requireContext(), resId = pop_up)
         })
+
+        binding.beersList.setBeers(
+            List(5) {
+                Beer(id = it, name = "Beer $it", tagLine = "Nice drink")
+            }
+        )
     }
 }
